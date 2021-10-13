@@ -195,7 +195,7 @@ if __name__ == '__main__':
     if args.mode == 'train' :
         tmp = train_label_loader(DATASET_PATH)
         split_num = int(len(tmp) * 0.9)
-        tmp = tmp.iloc[-split_num:]
+        tmp = tmp.iloc[:split_num]
         tmp = add_paths_col(tmp)
 
         left_paths = np.array(tmp["left_paths"])
