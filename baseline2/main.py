@@ -146,24 +146,16 @@ if __name__ == '__main__':
         total_batch = math.ceil(len(train_dataset)/batch_size)
 
         print('학습 시작!')
-        # print('train_dataloader: ', next(iter(train_dataloader)))
-        print('A')
         for epoch in range(args.epochs) :
             avg_cost = 0
 
             for batch in tqdm(train_dataloader):
-                print('B')
                 X = batch['X'].to(device)
                 Y = batch['Y'].to(device)
-                print('C')
                 optimizer.zero_grad()
-                print('D')
                 hypothesis = model(X)
-                print('E')
                 cost = criterion(hypothesis, Y)
-                print('F')
                 cost.backward()
-                print('G')
                 optimizer.step()
                 
                 avg_cost += cost / total_batch
